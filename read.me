@@ -1,0 +1,49 @@
+--mysql.server start
+--/Users/fhdone/dev/zookeeper-3.4.9/bin/zkServer.sh start
+redis-server
+
+mysql.server stop
+ /Users/fhdone/dev/zookeeper-3.4.9/bin/zkServer.sh stop
+
+
+/Users/fhdone/dev/zookeeper-3.4.9/bin/zkCli.sh  -server 127.0.0.1:32771
+
+export MAVEN_OPTS="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"
+cd /Users/fhdone/Documents/git/SpringMVC_RedisSession
+mvn jetty:run
+
+cd /Users/fhdone/dev/redis-3.0.3/src 
+/Users/fhdone/dev/redis-3.0.3/src/redis-server /Users/fhdone/dev/redis-3.0.3/redis.conf
+
+/Users/fhdone/dev/redis-3.0.3/src/redis-cli shutdown
+
+/Users/fhdone/dev/redis-3.0.3/src/redis-cli 
+
+jenkins --httpPort=9090
+
+
+redis-server
+redis-cli
+
+redis-cli KEYS "*" | wc -l
+
+redis-cli -n 7 KEYS "*" | wc -l
+redis-cli -n 7 KEYS "*"  | xargs redis-cli -n 7 del 
+
+redis-cli -n 7 KEYS "TEST:ASSIGN_IN_ADVANCE*"  | xargs redis-cli -n 7 del 
+redis-cli -n 7 KEYS "TEST:ASSIGN_ON_TIME*"  | xargs redis-cli -n 7 del 
+redis-cli -n 7 KEYS "ASSIGN_ON_TIME*"  | xargs redis-cli -n 7 del 
+redis-cli -n 7 KEYS "ASSIGN_IN_ADVANCE*"  | xargs redis-cli -n 7 del
+redis-cli -n 7 KEYS "LOCK*"  | xargs redis-cli -n 7 del 
+
+
+-Xmx256m
+-XX:+PrintCommandLineFlags
+-XX:ErrorFile=/Users/fhdone/log/hs_err_%p.log 
+-XX:+PrintGCDateStamps
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=/Users/fhdone/log/
+-XX:MaxTenuringThreshold=5
+-XX:+PrintGCApplicationStoppedTime
+-XX:+PrintGCDetails
+-Xloggc:/Users/fhdone/log/app-gc.log

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- 	<aop:aspectj-autoproxy /> -->
+<!-- 	<context:annotation-config /> -->
+
+	<mvc:annotation-driven />
+	
+	<!-- 配置扫描包 去除控制器 -->
+	<context:component-scan base-package="com.fhdone.paper2019">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- <context:property-placeholder location="classpath:dbconfig.properties" 
+		/> -->
+		
+	<bean id="springContextUtil" class="com.fhdone.paper2019.util.SpringContextUtil" />
+	
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="fileEncoding" value="utf-8" />
+		<property name="locations">
+			<list>
+				<value>classpath*:dbconfig.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+		<property name="slowSqlMillis" value="3000" />
+		<property name="logSlowSql" value="true" />
+	</bean>
+
+	<bean id="wall-filter" class="com.alibaba.druid.wall.WallFilter">
+		<property name="dbType" value="mysql" />
+		<property name="logViolation" value="true" />
+		<property name="throwException" value="true" />
+		<property name="config" ref="wall-filter-config" />
+	</bean>
+
+	<bean id="wall-filter-config" class="com.alibaba.druid.wall.WallConfig"
+		init-method="init">
+		<!-- 指定配置装载的目录 -->
+		<property name="dir" value="/src/main/resources/druid" />
+		<!-- <property name="deleteWhereNoneCheck" value="true" /> -->
+	</bean>
+
+	<bean id="log-filter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
+		<!-- <property name="resultSetLogEnabled" value="true" /> -->
+		<!-- <property name="statementExecutableSqlLogEnable" value="true" /> -->
+	</bean>
+
+	<!-- 阿里 druid 数据库连接池 -->
+	<bean id="dataSourceDruid0" class="com.alibaba.druid.pool.DruidDataSource"
+		destroy-method="close">
+		<!-- 数据库基本信息配置 -->
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+		<property name="driverClassName" value="${driverClassName}" />
+		<property name="filters" value="${filters}" />
+		<!-- 最大并发连接数 -->
+		<property name="maxActive" value="${maxActive}" />
+		<!-- 初始化连接数量 -->
+		<property name="initialSize" value="${initialSize}" />
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${maxWait}" />
+		<!-- 最小空闲连接数 -->
+		<property name="minIdle" value="${minIdle}" />
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}" />
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}" />
+		<property name="validationQuery" value="${validationQuery}" />
+		<property name="testWhileIdle" value="${testWhileIdle}" />
+		<property name="testOnBorrow" value="${testOnBorrow}" />
+		<property name="testOnReturn" value="${testOnReturn}" />
+		<property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}" />
+		<!-- 打开 removeAbandoned 功能 -->
+		<property name="removeAbandoned" value="${removeAbandoned}" />
+		<!-- 1800 秒，也就是 30 分钟 -->
+		<property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}" />
+		<!-- <property name="timeBetweenLogStatsMillis" value="300000" /> -->
+		<!-- 关闭 abanded 连接时输出错误日志 -->
+		<property name="logAbandoned" value="${logAbandoned}" />
+		<property name="proxyFilters">
+			<list>
+				<ref bean="stat-filter" />
+				<ref bean="wall-filter" />
+				<ref bean="log-filter" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- 配置与mybatis 的整合 -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 指定mybatis全局配置文件的位置 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<property name="dataSource" ref="dataSourceDruid0"></property>
+		<!-- 指定mybatis mapper文件的位置 -->
+		<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+		<property name="plugins">
+	        <array>
+	            <bean class="com.github.pagehelper.PageInterceptor">
+	                <!-- 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 -->
+	                <property name="properties">
+	                    <value>
+	                        helperDialect=mysql
+<!-- 	                        reasonable=true -->
+<!-- 	                        supportMethodsArguments=true -->
+<!-- 	                        params=count=countSql -->
+<!-- 	                        autoRuntimeDialect=true -->
+	                    </value>
+	                </property>
+	            </bean>
+	        </array>
+	    </property>
+	</bean>
+
+	<!-- 配置扫描包，加载mapper代理对象 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描所有的dao接口的实现，加入到ioc容器中 -->
+		<property name="basePackage" value="com.fhdone.paper2019.dao"></property>
+	</bean>
+
+	<!-- 配置一个可以执行批量的 sqlSessionTemplate -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
+		<constructor-arg name="executorType" value="BATCH"></constructor-arg>
+	</bean>
+
+	<tx:annotation-driven />
+	
+	<!-- 事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 数据源 -->
+		<property name="dataSource" ref="dataSourceDruid0" />
+	</bean>
+
+	<!-- <bean id="jedisConnectionFactory" -->
+	<!-- class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" -->
+	<!-- p:host-name="127.0.0.1" p:port="6379" p:use-pool="true" p:database="8" 
+		/> -->
+
+	<!-- <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" -->
+	<!-- p:connection-factory-ref="jedisConnectionFactory" /> -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="5" />
+		<property name="maxIdle" value="2" />
+		<property name="maxWaitMillis" value="30000" />
+	</bean>
+
+	<bean id="jedisConnectionFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+		<property name="poolConfig" ref="jedisPoolConfig" />
+		<property name="hostName" value="127.0.0.1" />
+		<property name="port" value="6379" />
+		<property name="usePool" value="true" />
+		<property name="database" value="2" />
+	</bean>
+
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory" ref="jedisConnectionFactory" />
+		<property name="defaultSerializer">
+			<bean
+				class="com.alibaba.fastjson.support.spring.GenericFastJsonRedisSerializer" />
+		</property>
+	</bean>
+
+	<bean id="messageThreadPool"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="1" />
+		<property name="maxPoolSize" value="2" />
+		<property name ="keepAliveSeconds" value ="300" /> 
+		<property name="queueCapacity" value="50" />
+	</bean>
+
+
+    <bean id="druid-stat-interceptor"
+          class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
+    </bean>
+
+    <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut"
+          scope="prototype">
+        <property name="patterns">
+            <list>
+                <value>com.fhdone.paper2019.service.*</value>
+            </list>
+        </property>
+    </bean>
+
+    <aop:config>
+        <aop:advisor advice-ref="druid-stat-interceptor" pointcut-ref="druid-stat-pointcut"/>
+    </aop:config>
+
+
+<!--	<import resource="sharding.xml.bak" />-->
+<!-- 	<context:property-placeholder location="classpath:log4j.properties" /> -->
+
+<!--	<import resource="dubbo-provider.xml" />-->
+<!-- 	<import resource="dubbo-consumer.xml" /> -->
+<!-- 	<import resource="applicationcontext-xxl-job.xml.bak" /> -->
+<!--	<import resource="spring-quartz.xml.bak" />-->
+
+</beans>
