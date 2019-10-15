@@ -4,6 +4,10 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
 
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
 	<!-- 1.启动spring的 容器 -->
 	<!-- needed for ContextLoaderListener -->
 	<context-param>
@@ -108,6 +112,5 @@
 		<url-pattern> /druid/* </url-pattern>
 	</servlet-mapping>
 	<!-- 连接池 启用 Web 监控统计功能 end -->
-
 
 </web-app>

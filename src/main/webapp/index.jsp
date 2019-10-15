@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-  <script type="text/javascript" src="static/js/jquery-1.4.2.min.js"></script>
-  <link href="static/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
- <script src="static/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
+  <link href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+ <script src="static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
-<jsp:forward page="/studs?pn=1" />
+<jsp:forward page="/student/list" />
 
 </head>
 <body>
