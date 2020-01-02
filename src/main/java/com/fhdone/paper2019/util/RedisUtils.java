@@ -10,7 +10,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-public class RedisUtil {
+public class RedisUtils {
 
 	public static Jedis jedis;
 	public static Jedis jedis2;
@@ -40,7 +40,7 @@ public class RedisUtil {
 
 	public static void main(String args[]) throws Exception{
 		ExecutorService executorService = Executors.newFixedThreadPool(100);
-		Jedis jedis = RedisUtil.getJedisByPool();
+		Jedis jedis = RedisUtils.getJedisByPool();
 		Set<Long> tmp = new HashSet<Long>();
 		jedis.set("a","0");
 		jedis.close();
@@ -49,7 +49,7 @@ public class RedisUtil {
 				@Override
 				public void run() {
 					try {
-						Jedis jedis = RedisUtil.getJedisByPool();
+						Jedis jedis = RedisUtils.getJedisByPool();
 						tmp.add(jedis.incr("a"));
 						jedis.close();
 					}

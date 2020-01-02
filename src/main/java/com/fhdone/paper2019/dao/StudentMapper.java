@@ -3,8 +3,8 @@ package com.fhdone.paper2019.dao;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-import com.fhdone.paper2019.bean.Student;
-import com.fhdone.paper2019.bean.StudentExample;
+import com.fhdone.paper2019.model.Student;
+import com.fhdone.paper2019.model.StudentExample;
 
 public interface StudentMapper {
     long countByExample(StudentExample example);

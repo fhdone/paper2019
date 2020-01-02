@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fhdone.paper2019.bean.Student;
-import com.fhdone.paper2019.bean.StudentExample;
+import com.fhdone.paper2019.model.Student;
+import com.fhdone.paper2019.model.StudentExample;
 import com.fhdone.paper2019.dao.StudentMapper;
 import com.fhdone.paper2019.service.IStudentService;
 

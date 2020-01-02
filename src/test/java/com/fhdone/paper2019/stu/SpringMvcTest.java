@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.fhdone.paper2019.BaseTest;
-import com.fhdone.paper2019.bean.Student;
+import com.fhdone.paper2019.model.Student;
 import com.github.pagehelper.PageInfo;
 
 public class SpringMvcTest extends BaseTest{

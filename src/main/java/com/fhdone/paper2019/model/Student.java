@@ -1,4 +1,4 @@
-package com.fhdone.paper2019.bean;
+package com.fhdone.paper2019.model;
 
 import java.io.Serializable;
 

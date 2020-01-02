@@ -5,19 +5,19 @@
 <!-- 	<cache eviction="LRU" flushInterval="60000" size="1024" readOnly="true" /> -->
 	<cache/>
 
-	<resultMap id="BaseResultMap" type="com.fhdone.paper2019.bean.Student">
+	<resultMap id="BaseResultMap" type="com.fhdone.paper2019.model.Student">
 		<id column="id" jdbcType="NUMERIC" property="id" />
 		<result column="stu_name" jdbcType="VARCHAR" property="stuName" />
 		<result column="stu_add" jdbcType="VARCHAR" property="stuAdd" />
 	</resultMap>
 
-	<resultMap id="oneToManyResultMap" type="com.fhdone.paper2019.bean.Student">
+	<resultMap id="oneToManyResultMap" type="com.fhdone.paper2019.model.Student">
 		<id column="id" jdbcType="NUMERIC" property="id" />
 		<result column="stu_name" jdbcType="VARCHAR" property="stuName" />
 		<result column="stu_add" jdbcType="VARCHAR" property="stuAdd" />
 	</resultMap>
 
-	<resultMap id="oneToManyResultMapBySQL" type="com.fhdone.paper2019.bean.Student">
+	<resultMap id="oneToManyResultMapBySQL" type="com.fhdone.paper2019.model.Student">
 		<id column="id" jdbcType="NUMERIC" property="id" />
 		<result column="stu_name" jdbcType="VARCHAR" property="stuName" />
 		<result column="stu_add" jdbcType="VARCHAR" property="stuAdd" />
@@ -94,9 +94,9 @@
 		id, stu_name, stu_add
 	</sql>
 	
-<!-- 	<select id="selectByExample" fetchSize="5" parameterType="com.fhdone.paper2019.bean.StudentExample" -->
+<!-- 	<select id="selectByExample" fetchSize="5" parameterType="com.fhdone.paper2019.model.StudentExample" -->
 <!-- 		resultMap="BaseResultMap" useCache="false"> -->
-	<select id="selectByExample" parameterType="com.fhdone.paper2019.bean.StudentExample"
+	<select id="selectByExample" parameterType="com.fhdone.paper2019.model.StudentExample"
 		resultMap="BaseResultMap" useCache="false">
 		select
 		<if test="distinct">
@@ -123,13 +123,13 @@
 		tbl_stu
 		where id = #{id,jdbcType=NUMERIC}
 	</delete>
-	<delete id="deleteByExample" parameterType="com.fhdone.paper2019.bean.StudentExample">
+	<delete id="deleteByExample" parameterType="com.fhdone.paper2019.model.StudentExample">
 		delete from tbl_stu
 		<if test="_parameter != null">
 			<include refid="Example_Where_Clause" />
 		</if>
 	</delete>
-	<insert id="insert" parameterType="com.fhdone.paper2019.bean.Student">
+	<insert id="insert" parameterType="com.fhdone.paper2019.model.Student">
 		insert into tbl_stu (id,
 		stu_name, stu_add
 		)
@@ -138,7 +138,7 @@
 		#{stuAdd,jdbcType=VARCHAR}
 		)
 	</insert>
-	<insert id="insertSelective" parameterType="com.fhdone.paper2019.bean.Student">
+	<insert id="insertSelective" parameterType="com.fhdone.paper2019.model.Student">
 		insert into tbl_stu
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
@@ -163,7 +163,7 @@
 			</if>
 		</trim>
 	</insert>
-	<select id="countByExample" parameterType="com.fhdone.paper2019.bean.StudentExample"
+	<select id="countByExample" parameterType="com.fhdone.paper2019.model.StudentExample"
 		resultType="java.lang.Long">
 		select count(*) from tbl_stu
 		<if test="_parameter != null">
@@ -198,7 +198,7 @@
 			<include refid="Update_By_Example_Where_Clause" />
 		</if>
 	</update>
-	<update id="updateByPrimaryKeySelective" parameterType="com.fhdone.paper2019.bean.Student">
+	<update id="updateByPrimaryKeySelective" parameterType="com.fhdone.paper2019.model.Student">
 		update tbl_stu
 		<set>
 			<if test="stuName != null">
@@ -210,7 +210,7 @@
 		</set>
 		where id = #{id,jdbcType=NUMERIC}
 	</update>
-	<update id="updateByPrimaryKey" parameterType="com.fhdone.paper2019.bean.Student">
+	<update id="updateByPrimaryKey" parameterType="com.fhdone.paper2019.model.Student">
 		update tbl_stu
 		set
 		stu_name = #{stuName,jdbcType=VARCHAR},
@@ -219,8 +219,8 @@
 		where id = #{id,jdbcType=NUMERIC}
 	</update>
 
-	<select id="selectJoinTest" parameterType="com.fhdone.paper2019.bean.Student"
-		resultType="com.fhdone.paper2019.bean.Student">
+	<select id="selectJoinTest" parameterType="com.fhdone.paper2019.model.Student"
+		resultType="com.fhdone.paper2019.model.Student">
 		SELECT
 		s.id, s.stu_name, s.stu_add
 		,ss.Grade AS grade

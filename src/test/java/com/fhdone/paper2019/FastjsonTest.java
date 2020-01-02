@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.TypeReference;
-import com.fhdone.paper2019.bean.Student;
+import com.fhdone.paper2019.model.Student;
 
 public class FastjsonTest {
 

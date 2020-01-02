@@ -8,7 +8,7 @@ import com.alibaba.druid.sql.parser.SQLStatementParser;
 import com.alibaba.druid.util.JdbcConstants;
 import org.junit.Test;
 
-public class DruidSql {
+public class DruidSqlTest {
 
     @Test
     public void processSql(){

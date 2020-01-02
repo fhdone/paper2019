@@ -1,7 +1,10 @@
 package com.fhdone.paper2019.controller;
 
-import java.util.List;
-
+import com.fhdone.paper2019.model.Student;
+import com.fhdone.paper2019.service.IStudentService;
+import com.fhdone.paper2019.util.LogUtils;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.fhdone.paper2019.bean.Student;
-import com.fhdone.paper2019.service.IStudentService;
-import com.fhdone.paper2019.util.LogUtils;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.ResponseBody;
+import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/student")
@@ -27,9 +27,9 @@ public class StudentController {
 	IStudentService  studService ;
 
 	@RequestMapping("/list")
-	public  String  getAllStudents(
-			@RequestParam(value="pn",defaultValue="1")Integer pn,
-			Model model){
+	public  Mono<String>  getAllStudents(
+            @RequestParam(value="pn",defaultValue="1")Integer pn,
+            Model model){
 		LogUtils.logip();
 		logger.info("StudentController getAllStudents");
 		//在查询之前使用分页   pn第几页 每页10条
@@ -41,12 +41,29 @@ public class StudentController {
 		//model.addAttribute("studs", students);
 		model.addAttribute("pageInfo", pageInfo);
 
-		return "list" ;
+		return Mono.just("list") ;
 	}
+
+//    @RequestMapping("/queryStuByPage")
+//    @ResponseBody
+//    public  PageInfo  queryStuByPage(
+//            @RequestParam(value="offset",defaultValue="0")Integer offset,
+//            @RequestParam(value="limit",defaultValue="0")Integer limit,
+//            Model model){
+//
+//	    int pageNum = 1;
+//	    if(offset!=0 && limit!=0 ){
+//            pageNum = offset/limit+1;
+//        }
+//        PageHelper.startPage(pageNum, limit);
+//        List<Student> students=studService.getAllStudents();
+//        PageInfo<Student> pageInfo = new PageInfo<Student>(students,10);
+//        return pageInfo;
+//    }
 
     @RequestMapping("/queryStuByPage")
     @ResponseBody
-    public  PageInfo  queryStuByPage(
+    public Mono<PageInfo>  queryStuByPage(
             @RequestParam(value="offset",defaultValue="0")Integer offset,
             @RequestParam(value="limit",defaultValue="0")Integer limit,
             Model model){
@@ -58,7 +75,7 @@ public class StudentController {
         PageHelper.startPage(pageNum, limit);
         List<Student> students=studService.getAllStudents();
         PageInfo<Student> pageInfo = new PageInfo<Student>(students,10);
-        return pageInfo;
+        return Mono.just(pageInfo);
     }
 
 

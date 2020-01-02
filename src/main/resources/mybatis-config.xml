@@ -9,7 +9,7 @@
 	</settings>
 
 	<typeAliases>
-		<package name="com.fhdone.paper2019.bean" />
+		<package name="com.fhdone.paper2019.model" />
 	</typeAliases>
 
 <!-- 	<plugins> -->

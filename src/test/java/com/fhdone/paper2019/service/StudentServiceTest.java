@@ -1,7 +1,7 @@
 package com.fhdone.paper2019.service;
 
 import com.fhdone.paper2019.BaseTest;
-import com.fhdone.paper2019.bean.Student;
+import com.fhdone.paper2019.model.Student;
 import com.github.pagehelper.PageHelper;
 import org.junit.Test;
 import org.slf4j.Logger;

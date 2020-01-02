@@ -2,8 +2,8 @@ package com.fhdone.paper2019.service;
 
 import java.util.List;
 
-import com.fhdone.paper2019.bean.Student;
-import com.fhdone.paper2019.bean.StudentExample;
+import com.fhdone.paper2019.model.Student;
+import com.fhdone.paper2019.model.StudentExample;
 
 public interface IStudentService {
 	
