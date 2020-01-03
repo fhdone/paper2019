@@ -2,9 +2,7 @@ package com.fhdone.paper2019.util;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -39,7 +37,11 @@ public class RedisUtils {
 	}
 
 	public static void main(String args[]) throws Exception{
-		ExecutorService executorService = Executors.newFixedThreadPool(100);
+//		ExecutorService executorService = Executors.newFixedThreadPool(100);
+        ExecutorService executorService = new ThreadPoolExecutor(100, 100,
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>());
+
 		Jedis jedis = RedisUtils.getJedisByPool();
 		Set<Long> tmp = new HashSet<Long>();
 		jedis.set("a","0");

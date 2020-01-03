@@ -9,7 +9,7 @@ public interface IStudentService {
 	
 	public List<Student> getAllStudents();
 
-	public List<Student> getStudentsByPage(Integer pageNum,  Integer page_size);
+	public List<Student> getStudentsByPage(Integer pageNum,  Integer pageSize);
 	
 	public Student getStudentsById(Long id);
 	

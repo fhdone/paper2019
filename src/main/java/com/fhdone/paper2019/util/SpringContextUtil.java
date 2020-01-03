@@ -13,6 +13,7 @@ public class SpringContextUtil implements ApplicationContextAware {
 	 * @param applicationContext
 	 * @throws BeansException
 	 */
+	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		synchronized (SpringContextUtil.class) {
 			if (applicationContext == null) {
@@ -49,7 +50,7 @@ public class SpringContextUtil implements ApplicationContextAware {
 	 * @throws BeansException
 	 */
 	public static <T> T getBean(String name, Class<T> requiredType) throws BeansException {
-		return (T)applicationContext.getBean(name, requiredType);
+		return applicationContext.getBean(name, requiredType);
 	}
 
 	/**

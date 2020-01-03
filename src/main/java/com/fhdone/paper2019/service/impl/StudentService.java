@@ -31,22 +31,24 @@ public class StudentService implements IStudentService {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	
-	public List<Student> getAllStudents() {
+	@Override
+    public List<Student> getAllStudents() {
 //		return sqlSessionTemplate.selectList("com.fhdone.java2017.dao.StudentMapper.selectByExample", null);
 		StudentExample example = new StudentExample();
 		example.setOrderByClause("id asc");
 		return studentMapper.selectByExample(example);
 	}
 	
-	public List<Student> getStudentsByPage(Integer pageNum,  Integer page_size) {
+	@Override
+    public List<Student> getStudentsByPage(Integer pageNum, Integer pageSize) {
 		int offset=0;
 		if(pageNum>1) {
-			offset=(pageNum-1)*page_size;
+			offset=(pageNum-1)* pageSize;
 		}
-		logger.info("offset:{},page_size:{}",offset,page_size);
+		logger.info("offset:{},page_size:{}",offset, pageSize);
 		StudentExample example = new StudentExample();
 		example.setOrderByClause("id asc");
-		return sqlSessionTemplate.selectList("com.fhdone.java2017.dao.StudentMapper.selectByExample", example, new RowBounds(offset, page_size));
+		return sqlSessionTemplate.selectList("com.fhdone.java2017.dao.StudentMapper.selectByExample", example, new RowBounds(offset, pageSize));
 	}
 	
 	
@@ -67,12 +69,14 @@ public class StudentService implements IStudentService {
 		
 	}
 	
-	public Long countStudents() {
+	@Override
+    public Long countStudents() {
 		StudentExample example = new StudentExample();
 		return studentMapper.countByExample(example);
 	}
 
-	public Student getStudentsById(Long id) {
+	@Override
+    public Student getStudentsById(Long id) {
 		return studentMapper.selectByPrimaryKey(id);
 	}
 
