@@ -3,6 +3,7 @@ package com.fhdone.paper2019.service;
 import com.fhdone.paper2019.BaseTest;
 import com.fhdone.paper2019.model.Student;
 import com.github.pagehelper.PageHelper;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ public class StudentServiceTest extends BaseTest {
 
 
     @Test
+    @Ignore
     public void testGetAllStudents() {
         PageHelper.startPage(1, 10);
         List<Student> listStu = studService.getAllStudents();

@@ -3,6 +3,7 @@ package com.fhdone.paper2019.stu;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -28,6 +29,7 @@ public class SpringMvcTest extends BaseTest{
 	}
 
 	@Test
+    @Ignore
 	public void  testSpringMvc() throws Exception {
 		MvcResult result =mockMvc.perform(
 				MockMvcRequestBuilders.get("/student/list")
