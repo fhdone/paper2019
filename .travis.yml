@@ -5,14 +5,13 @@ dist: trusty
 jdk:
     - oraclejdk8
 
+install:
+  - pip install --user codecov
+    
 script:
     mvn -DskipTests=true clean package
 
 
-install:
-  - pip install --user codecov
-
-
 after_success:
-  # codecov
+  - jdk_switcher use oraclejdk8
   - codecov
