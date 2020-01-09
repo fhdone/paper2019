@@ -8,3 +8,11 @@ jdk:
 script:
     mvn -DskipTests=true clean package
 
+
+install:
+  - pip install --user codecov
+
+
+after_success:
+  # codecov
+  - codecov
