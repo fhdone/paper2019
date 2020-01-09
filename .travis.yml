@@ -13,5 +13,4 @@ script:
 
 
 after_success:
-  - jdk_switcher use oraclejdk8
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
