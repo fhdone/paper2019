@@ -5,13 +5,15 @@ import com.maxmind.geoip2.WebServiceClient;
 import com.maxmind.geoip2.model.AsnResponse;
 import com.maxmind.geoip2.model.CountryResponse;
 import com.maxmind.geoip2.record.Country;
+import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 import java.net.InetAddress;
 
+@Component
 public class IPUtils {
 
-    public static void queryIp() throws Exception {
+    public void queryIp() throws Exception {
         try(
 //                WebServiceClient client = new WebServiceClient.Builder(150078, "U0D5rABcb0iTBjlf")
 //                        .build()) {
@@ -30,7 +32,7 @@ public class IPUtils {
         }
     }
 
-    public static void queryIpByDB() throws Exception {
+    public void queryIpByDB() throws Exception {
         // A File object pointing to your GeoLite2 ASN database
         InputStream database = IPUtils.class.getClassLoader().getResourceAsStream("geolite2/GeoLite2-ASN.mmdb");
 

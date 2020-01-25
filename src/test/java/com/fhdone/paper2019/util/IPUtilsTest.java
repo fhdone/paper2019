@@ -1,13 +1,18 @@
 package com.fhdone.paper2019.util;
 
+import com.fhdone.paper2019.BaseTest;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class IPUtilsTest {
+public class IPUtilsTest extends BaseTest {
+
+    @Autowired
+    private IPUtils ipUtils;
 
     @Test
     public void queryIp(){
         try {
-			IPUtils.queryIpByDB();
+            ipUtils.queryIpByDB();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
