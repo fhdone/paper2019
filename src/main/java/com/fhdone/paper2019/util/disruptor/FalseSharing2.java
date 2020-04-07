@@ -1,5 +1,7 @@
 package com.fhdone.paper2019.util.disruptor;
 
+//import jdk.internal.vm.annotation.Contended;
+
 // https://www.jianshu.com/p/c3c108c3dcfd
 public class FalseSharing2 implements Runnable {
 
@@ -69,7 +71,8 @@ public class FalseSharing2 implements Runnable {
      * Restricted on user classpath
      * Unlock: -XX:-RestrictContended
      */
-    @sun.misc.Contended
+//    @sun.misc.Contended
+//    @jdk.internal.vm.annotation.Contended
     public final static class VolatileLong3 {
         public volatile long value = 0L;
     }
