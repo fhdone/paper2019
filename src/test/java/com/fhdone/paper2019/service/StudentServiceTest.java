@@ -20,6 +20,7 @@ public class StudentServiceTest extends BaseTest {
     private IStudentService studService;
 
     @Test
+    @Ignore
     public void testGetAllStudents() {
         PageHelper.startPage(1, 10);
         List<Student> listStu = studService.getAllStudents();

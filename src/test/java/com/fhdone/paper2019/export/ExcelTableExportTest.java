@@ -7,6 +7,7 @@ import com.fhdone.paper2019.service.IStudentService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.google.common.util.concurrent.*;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,7 @@ public class ExcelTableExportTest extends BaseTest {
     IStudentService studService;
 
     @Test
+    @Ignore
     public void createPoiExcelTableExport() throws Exception {
         TableExport export = TableExportFactory.createPoiExcelTableExport();
         queryDataByMutiThread(export,1);
@@ -41,6 +43,7 @@ public class ExcelTableExportTest extends BaseTest {
     }
 
     @Test
+    @Ignore
     public void createPoiExcelTableExport2() throws Exception {
         TableExport export = TableExportFactory.createPoiExcelTableExport();
         queryDataByMutiThread(export,2);
