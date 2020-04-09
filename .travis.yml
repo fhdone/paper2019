@@ -14,7 +14,7 @@ install:
 
 script:
   - mvn -DskipTests=true clean package
-  #  - mvn test
+  - mvn test
   #  - mvn cobertura:cobertura
 
 after_success:
