@@ -29,7 +29,11 @@
 				<configuration>
 					<source>11</source>
 					<target>11</target>
-				</configuration>
+                    <compilerArgs>
+                        <arg>--add-exports</arg>
+                        <arg>java.base/jdk.internal.vm.annotation=ALL-UNNAMED</arg>
+                    </compilerArgs>
+                </configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>

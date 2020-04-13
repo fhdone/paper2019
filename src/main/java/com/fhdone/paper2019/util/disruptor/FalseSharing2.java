@@ -1,6 +1,6 @@
 package com.fhdone.paper2019.util.disruptor;
 
-//import jdk.internal.vm.annotation.Contended;
+import jdk.internal.vm.annotation.Contended;
 
 // https://www.jianshu.com/p/c3c108c3dcfd
 public class FalseSharing2 implements Runnable {
@@ -9,7 +9,7 @@ public class FalseSharing2 implements Runnable {
     public final static long ITERATIONS = 500L * 1000L * 1000L;
     private final int arrayIndex;
 
-//    private static VolatileLong[] longs = new VolatileLong[NUM_THREADS];
+    //    private static VolatileLong[] longs = new VolatileLong[NUM_THREADS];
 //    private static VolatileLong2[] longs = new VolatileLong2[NUM_THREADS];
     private static VolatileLong3[] longs = new VolatileLong3[NUM_THREADS];
 
@@ -72,7 +72,7 @@ public class FalseSharing2 implements Runnable {
      * Unlock: -XX:-RestrictContended
      */
 //    @sun.misc.Contended
-//    @jdk.internal.vm.annotation.Contended
+    @jdk.internal.vm.annotation.Contended
     public final static class VolatileLong3 {
         public volatile long value = 0L;
     }
