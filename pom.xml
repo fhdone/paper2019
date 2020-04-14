@@ -94,6 +94,11 @@
 	</build>
 
 	<dependencies>
+        <dependency>
+            <groupId>org.graalvm.sdk</groupId>
+            <artifactId>graal-sdk</artifactId>
+            <version>20.0.0</version>
+        </dependency>
 		<!-- <dependency> -->
 		<!-- <groupId>javax.servlet</groupId> -->
 		<!-- <artifactId>javax.servlet-api</artifactId> -->
@@ -255,10 +260,10 @@
             <version>3.4.0</version>
         </dependency>
         <dependency>
-            <groupId>org.graalvm.sdk</groupId>
-            <artifactId>graal-sdk</artifactId>
-            <version>20.0.0</version>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>1.23</version>
+            <scope>provided</scope>
         </dependency>
-
     </dependencies>
 </project>
