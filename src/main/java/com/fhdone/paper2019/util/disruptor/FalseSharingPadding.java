@@ -21,7 +21,7 @@ public class FalseSharingPadding implements Runnable{
 //        }
 //    }
 
-    public static void Test() throws InterruptedException {
+    public static void test() throws InterruptedException {
         runTest(4);
     }
 

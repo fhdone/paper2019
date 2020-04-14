@@ -1,5 +1,6 @@
 package com.fhdone.paper2019.util.disruptor;
 
+
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
@@ -14,26 +15,21 @@ import java.util.concurrent.TimeUnit;
 @Threads(1)
 @Fork(1)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-public class FalseSharingTest {
+public class CacheLineEffectTest {
 
     @Benchmark
-    public void falseSharingPadding() throws InterruptedException {
-        FalseSharingPadding.test();
+    public void test_1() throws InterruptedException {
+        CacheLineEffect.test_1();
     }
 
     @Benchmark
-    public void falseSharingNoPadding() throws InterruptedException {
-        FalseSharingNoPadding.test();
-    }
-
-    @Benchmark
-    public void falseSharingPaddingContented() throws InterruptedException {
-        FalseSharingPaddingContented.test();
+    public void test_2() throws InterruptedException {
+        CacheLineEffect.test_2();
     }
 
     public static void main(String[] args) throws RunnerException {
         Options options = new OptionsBuilder()
-                .include(FalseSharingTest.class.getSimpleName())
+                .include(CacheLineEffectTest.class.getSimpleName())
                 .build();
         new Runner(options).run();
     }

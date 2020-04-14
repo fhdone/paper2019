@@ -11,7 +11,7 @@ public class FalseSharingNoPadding implements Runnable{
         this.arrayIndex = arrayIndex;
     }
 
-    public static void Test() throws InterruptedException {
+    public static void test() throws InterruptedException {
         runTest(4);
     }
 
