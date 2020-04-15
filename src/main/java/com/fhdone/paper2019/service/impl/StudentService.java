@@ -6,9 +6,11 @@ import java.util.List;
 import org.apache.ibatis.session.ResultContext;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.aop.interceptor.PerformanceMonitorInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +24,8 @@ import com.fhdone.paper2019.service.IStudentService;
 @Transactional
 public class StudentService implements IStudentService {
 
-	private Logger logger = LoggerFactory.getLogger(StudentService.class); 
-	
+    private Logger logger = LogManager.getLogger(StudentService.class);
+
 	@Autowired
 	private StudentMapper studentMapper;
 

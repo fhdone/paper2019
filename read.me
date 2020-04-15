@@ -9,6 +9,9 @@ mysql.server stop
 /Users/fhdone/dev/zookeeper-3.4.9/bin/zkCli.sh  -server 127.0.0.1:32771
 
 export MAVEN_OPTS="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"
+
+export MAVEN_OPTS="-Xdebug -Xnoagent -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n"
+
 cd /Users/fhdone/Documents/git/SpringMVC_RedisSession
 mvn jetty:run
 

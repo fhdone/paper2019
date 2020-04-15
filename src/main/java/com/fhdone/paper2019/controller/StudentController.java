@@ -5,8 +5,8 @@ import com.fhdone.paper2019.service.IStudentService;
 import com.fhdone.paper2019.util.LogUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +21,9 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 
-	private Logger logger = LoggerFactory.getLogger(StudentController.class); 
+    private Logger logger = LogManager.getLogger(StudentController.class);
 
-	@Autowired
+    @Autowired
 	IStudentService  studService ;
 
 	@RequestMapping("/list")

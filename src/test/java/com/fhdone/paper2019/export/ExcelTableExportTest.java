@@ -4,12 +4,14 @@ package com.fhdone.paper2019.export;
 import com.fhdone.paper2019.BaseTest;
 import com.fhdone.paper2019.model.Student;
 import com.fhdone.paper2019.service.IStudentService;
+import com.fhdone.paper2019.util.LogUtils;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.google.common.util.concurrent.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,7 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ExcelTableExportTest extends BaseTest {
 
-    private Logger logger = LoggerFactory.getLogger(ExcelTableExportTest.class);
+    private Logger logger = LogManager.getLogger(ExcelTableExportTest.class);
     private final int PAGE_SIZE = 5;
     private final int THREAD_SIZE = 3;
 

@@ -8,6 +8,8 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.concurrent.TimeUnit;
 
+
+//-XX:-RestrictContended
 @BenchmarkMode(Mode.AverageTime)
 @Warmup(iterations = 1)
 @Measurement(iterations = 2, time = 5, timeUnit = TimeUnit.SECONDS)
