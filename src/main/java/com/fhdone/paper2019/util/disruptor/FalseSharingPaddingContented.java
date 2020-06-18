@@ -42,7 +42,7 @@ public class FalseSharingPaddingContented implements Runnable{
         }
     }
 
-    @jdk.internal.vm.annotation.Contended
+    //@jdk.internal.vm.annotation.Contended
     public final static class ValueContended {
         protected volatile long value = 0L;
     }

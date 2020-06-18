@@ -8,30 +8,62 @@ import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class RedisUtilsTest {
 
     private Logger logger = LogManager.getLogger(this.getClass());
 
-    public static final String CERT_SET = "CERT_MAP";
+    public static final String CERT_MAP = "CERT_MAP";
+    public static final String CERT_SET = "CERT_SET";
 
     @Test
     @Ignore
-    public void putKeysToRedis(){
+    public void putKeysToRedisMap(){
         Jedis jedis = RedisUtils.getJedisByPool();
 
         int i=0;
-        while (i<900_000){
+        while (i<1000_000){
             String certNo = RandomStringUtils.random(18, false, true);
             String name = RandomStringUtils.random(20, true, false);
-            jedis.hset(CERT_SET,certNo,name);
+            jedis.hset(CERT_MAP,certNo,name);
             i++;
             if(i%5000==0){
                 logger.info("{},finished" , i );
             }
         }
         jedis.close();
+    }
+
+    @Test
+    public void putKeysToRedisSet() throws InterruptedException {
+
+        for(int i=0; i<2; i++){
+            new Thread(new Runnable(){
+                @Override
+                public void run() {
+                    Jedis jedis = RedisUtils.getJedisByPool();
+                    Set<String> sets= new HashSet<>();
+                    int i=0;
+                    while (i<100_000_0){
+                        String certNo = RandomStringUtils.random(18, false, true);
+                        String name = RandomStringUtils.random(20, true, false);
+                        sets.add(certNo+name);
+                        i++;
+                        if(i%5000==0){
+                            jedis.sadd(CERT_SET,sets.toArray(new String[0]));
+                            sets.clear();
+                            logger.info("{},finished" , i );
+                        }
+                    }
+                    jedis.close();
+                }
+            }).start();
+        }
+        TimeUnit.SECONDS.sleep(300);
     }
 
     @Test

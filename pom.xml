@@ -27,11 +27,11 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<source>11</source>
-					<target>11</target>
-                    <compilerArgs>
-                        <arg>--add-exports=java.base/jdk.internal.vm.annotation=ALL-UNNAMED</arg>
-                    </compilerArgs>
+					<source>8</source>
+					<target>8</target>
+<!--                    <compilerArgs>-->
+<!--                        <arg>&#45;&#45;add-exports=java.base/jdk.internal.vm.annotation=ALL-UNNAMED</arg>-->
+<!--                    </compilerArgs>-->
                 </configuration>
 			</plugin>
 			<plugin>
@@ -283,7 +283,6 @@
             <artifactId>javax.el-api</artifactId>
             <version>3.0.1-b06</version>
         </dependency>
-
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.el</artifactId>
