@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Ignore;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.ScanParams;
+import redis.clients.jedis.ScanResult;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -65,6 +67,29 @@ public class RedisUtilsTest {
         }
         TimeUnit.SECONDS.sleep(300);
     }
+
+    @Test
+    public void testQueryCertSet(){
+        Jedis jedis = RedisUtils.getJedisByPool();
+        String cursor = "0";
+        int count=0;
+
+        ScanParams sp = new ScanParams();
+        sp.count(5000);
+
+        ScanResult<String> sr = jedis.sscan(CERT_SET,"0", sp);
+        count += sr.getResult().size();
+        logger.info("size:"+sr.getResult().size());
+
+        while( !"0".equals(sr.getCursor())){
+            sr = jedis.sscan(CERT_SET,sr.getCursor(), sp);
+            count += sr.getResult().size();
+            logger.info("size:"+sr.getResult().size());
+        }
+        jedis.close();
+        logger.info("count:"+count);
+    }
+
 
     @Test
     public void testQueryCert(){
