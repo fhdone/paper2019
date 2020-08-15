@@ -1,13 +1,17 @@
 package com.fhdone.paper2019.util;
 
 import com.fhdone.paper2019.service.StudentServiceTest;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -76,5 +80,12 @@ public class StringTest {
         }
     }
 
+    @Test
+    public void test2_Infinite() throws InterruptedException {
+       while (true){
+           test2();
+           TimeUnit.SECONDS.sleep(1);
+       }
+    }
 
 }

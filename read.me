@@ -50,3 +50,6 @@ redis-cli -n 7 KEYS "LOCK*"  | xargs redis-cli -n 7 del
 -XX:+PrintGCApplicationStoppedTime
 -XX:+PrintGCDetails
 -Xloggc:/Users/fhdone/log/app-gc.log
+
+
+mvn clean package -Dmaven.test.skip=true -Dmaven.javadoc.skip=true verify -Dgpg.skip=true
