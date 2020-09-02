@@ -3,8 +3,7 @@ package com.fhdone.paper2019.export;
 
 import com.fhdone.paper2019.BaseTest;
 import com.fhdone.paper2019.model.Student;
-import com.fhdone.paper2019.service.IStudentService;
-import com.fhdone.paper2019.util.LogUtils;
+import com.fhdone.paper2019.service.StudentService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.google.common.util.concurrent.*;
@@ -12,7 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
@@ -29,7 +27,7 @@ public class ExcelTableExportTest extends BaseTest {
     private final int THREAD_SIZE = 3;
 
     @Autowired
-    IStudentService studService;
+    StudentService studService;
 
     @Test
     @Ignore

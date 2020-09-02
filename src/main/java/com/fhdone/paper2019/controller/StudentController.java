@@ -1,7 +1,7 @@
 package com.fhdone.paper2019.controller;
 
 import com.fhdone.paper2019.model.Student;
-import com.fhdone.paper2019.service.IStudentService;
+import com.fhdone.paper2019.service.StudentService;
 import com.fhdone.paper2019.util.LogUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -24,7 +24,7 @@ public class StudentController {
     private Logger logger = LogManager.getLogger(StudentController.class);
 
     @Autowired
-	IStudentService  studService ;
+    StudentService studService ;
 
 	@RequestMapping("/list")
 	public  Mono<String>  getAllStudents(
