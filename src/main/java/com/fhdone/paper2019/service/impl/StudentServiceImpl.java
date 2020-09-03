@@ -18,7 +18,7 @@ import com.fhdone.paper2019.model.StudentExample;
 import com.fhdone.paper2019.dao.StudentMapper;
 import com.fhdone.paper2019.service.StudentService;
 
-@Service("studService")
+@Service("studentService")
 @Transactional
 public class StudentServiceImpl implements StudentService {
 

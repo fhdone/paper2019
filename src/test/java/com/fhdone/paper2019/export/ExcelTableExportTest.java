@@ -27,7 +27,7 @@ public class ExcelTableExportTest extends BaseTest {
     private final int THREAD_SIZE = 3;
 
     @Autowired
-    StudentService studService;
+    StudentService studentService;
 
     @Test
     @Ignore
@@ -64,7 +64,7 @@ public class ExcelTableExportTest extends BaseTest {
         export.setSheetName("学生信息");
         export.defineTitle(titleRow, new DataFormat[]{new DataFormat(DataFormatFactory.TITLT)});
 
-        Long count = studService.countStudents();
+        Long count = studentService.countStudents();
         long pageSum = (long) Math.ceil((double) count / PAGE_SIZE);
         logger.debug("PageSum:" + pageSum);
         if(type==1) {
@@ -176,7 +176,7 @@ public class ExcelTableExportTest extends BaseTest {
 
         @Override
         public List<Student> queryPageData() {
-            Page<Student> page = PageHelper.startPage(pageNum, PAGE_SIZE).doSelectPage(()-> studService.getAllStudents());
+            Page<Student> page = PageHelper.startPage(pageNum, PAGE_SIZE).doSelectPage(()-> studentService.getAllStudents());
             for(Student stu:page.getResult()) {
                 logger.info("pageNum:{},{}" ,this.pageNum , stu.toString()  );
             }

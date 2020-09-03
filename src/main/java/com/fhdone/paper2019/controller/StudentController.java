@@ -24,7 +24,7 @@ public class StudentController {
     private Logger logger = LogManager.getLogger(StudentController.class);
 
     @Autowired
-    StudentService studService ;
+    StudentService studentService;
 
 	@RequestMapping("/list")
 	public  Mono<String>  getAllStudents(
@@ -34,7 +34,7 @@ public class StudentController {
 		logger.info("StudentController getAllStudents");
 		//在查询之前使用分页   pn第几页 每页10条
 		PageHelper.startPage(pn, 10);
-		List<Student> students=studService.getAllStudents();
+		List<Student> students= studentService.getAllStudents();
 		//可以使用PageInfo对结果集合进行包装 直接把pageInfo交给前端页面
 		//第二个参数表示连续显示的页数 5页
 		PageInfo<Student> pageInfo = new PageInfo<Student>(students,10);
@@ -56,7 +56,7 @@ public class StudentController {
 //            pageNum = offset/limit+1;
 //        }
 //        PageHelper.startPage(pageNum, limit);
-//        List<Student> students=studService.getAllStudents();
+//        List<Student> students=studentService.getAllStudents();
 //        PageInfo<Student> pageInfo = new PageInfo<Student>(students,10);
 //        return pageInfo;
 //    }
@@ -73,7 +73,7 @@ public class StudentController {
             pageNum = offset/limit+1;
         }
         PageHelper.startPage(pageNum, limit);
-        List<Student> students=studService.getAllStudents();
+        List<Student> students= studentService.getAllStudents();
         PageInfo<Student> pageInfo = new PageInfo<Student>(students,10);
         return Mono.just(pageInfo);
     }
@@ -81,7 +81,7 @@ public class StudentController {
 
 	@RequestMapping("/delById")
 	public  String  delStudents (@RequestParam(value="id")Long id ){
-		studService.deleteByPrimaryKey(id);
+		studentService.deleteByPrimaryKey(id);
 		return "redirect:/student/list";
 	}
 

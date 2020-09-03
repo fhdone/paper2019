@@ -1,7 +1,6 @@
 package com.fhdone.paper2019.service;
 
 import com.fhdone.paper2019.BaseTest;
-import com.fhdone.paper2019.service.ElasticService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
