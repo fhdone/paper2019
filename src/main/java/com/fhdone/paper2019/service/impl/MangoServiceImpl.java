@@ -24,8 +24,8 @@ public class MangoServiceImpl implements MangoService {
     private MongoTemplate mongoTemplate;
 
     @Override
-    public Map<String,Object> findOne() {
-        Map<String,Object> map = mongoTemplate.findOne(new Query(where("applyusername").is("何吟")),
+    public Map<String,Object> findOne(String key, String value) {
+        Map<String,Object> map = mongoTemplate.findOne(new Query(where(key).is(value)),
                 Map.class,MangoServiceImpl.ES);
         log.info("map:{}", JSON.toJSONString(map));
         return map;

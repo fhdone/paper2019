@@ -25,7 +25,7 @@ public class MangoServiceImplTest extends BaseTest {
 
     @Test
     public void findOne() throws Exception {
-        Map<String,Object> map = mangoService.findOne();
+        Map<String,Object> map = mangoService.findOne("applyusername","何吟");
         Assert.assertNotNull(map);
     }
 
