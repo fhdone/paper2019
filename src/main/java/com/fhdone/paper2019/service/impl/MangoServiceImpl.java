@@ -39,4 +39,14 @@ public class MangoServiceImpl implements MangoService {
         log.info("map:{}", JSON.toJSONString(list));
         return list;
     }
+
+    @Override
+    public List<Map<String,Object>> queryKeyGtValue(String key, double value) {
+        List list = mongoTemplate.find(new Query(where(key).gt(value)),
+                Map.class,MangoServiceImpl.ES);
+        log.info("map:{}", JSON.toJSONString(list));
+        return list;
+    }
+
+
 }

@@ -9,4 +9,6 @@ public interface MangoService{
 
     public List<Map<String,Object>> queryKeyByRegex(String key, String regexValue);
 
+    public List<Map<String,Object>> queryKeyGtValue(String key, double value);
+
 }

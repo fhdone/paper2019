@@ -40,4 +40,13 @@ public class MangoServiceImplTest extends BaseTest {
         log.info("list size:{}",list.size());
     }
 
+
+    @Test
+    public void queryKeyGtValue() throws Exception {
+        List<Map<String,Object>> list = mangoService.queryKeyGtValue("amount",10000);
+        Assert.assertNotNull(list);
+        log.info("list size:{}",list.size());
+    }
+
+
 } 
