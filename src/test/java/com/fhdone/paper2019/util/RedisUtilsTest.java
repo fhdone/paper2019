@@ -23,7 +23,7 @@ public class RedisUtilsTest {
     public static final String CERT_SET = "CERT_SET";
 
     @Test
-    @Ignore
+//    @Ignore
     public void putKeysToRedisMap(){
         Jedis jedis = RedisUtils.getJedisByPool();
 
