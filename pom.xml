@@ -319,5 +319,10 @@
             <artifactId>spring-data-mongodb</artifactId>
             <version>3.0.3.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>5.0.1</version>
+        </dependency>
     </dependencies>
 </project>
