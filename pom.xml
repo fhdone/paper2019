@@ -12,7 +12,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>5.2.8.RELEASE</spring.version>
+		<spring.version>5.3.7</spring.version>
 		<mybatis.version>3.5.2</mybatis.version>
 		<mybatisspring.version>2.0.2</mybatisspring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -217,11 +217,11 @@
             <artifactId>spring-webflux</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>28.1-jre</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.google.guava</groupId>-->
+<!--            <artifactId>guava</artifactId>-->
+<!--            <version>28.1-jre</version>-->
+<!--        </dependency>-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -323,6 +323,11 @@
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <version>5.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.5.0</version>
         </dependency>
     </dependencies>
 </project>
