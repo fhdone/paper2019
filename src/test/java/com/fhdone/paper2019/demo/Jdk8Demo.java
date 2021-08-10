@@ -2,9 +2,14 @@ package com.fhdone.paper2019.demo;
 
 import org.junit.Test;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 //https://cloud.tencent.com/developer/article/1488128
@@ -72,6 +77,110 @@ public class Jdk8Demo {
         //③ 使用方法引用
         Supplier<Double> supplier2 = Math::random;
         System.out.println(supplier2.get());
+    }
+
+    /**
+     * Supplier接口测试2，使用需要Supplier的接口方法
+     */
+    @Test
+    public void test_Supplier2() {
+        Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5);
+        //返回一个optional对象
+        Optional<Integer> first = stream.filter(i -> i > 4)
+                .findFirst();
+
+        //optional对象有需要Supplier接口的方法
+        //orElse，如果first中存在数，就返回这个数，如果不存在，就放回传入的数
+        System.out.println(first.orElse(1));
+        System.out.println(first.orElse(7));
+
+        System.out.println("********************");
+
+        Supplier<Integer> supplier = new Supplier<Integer>() {
+            @Override
+            public Integer get() {
+                //返回一个随机值
+                return new Random().nextInt();
+            }
+        };
+
+        //orElseGet，如果first中存在数，就返回这个数，如果不存在，就返回supplier返回的值
+        System.out.println(first.orElseGet(supplier));
+    }
+
+
+    /**
+     * Predicate谓词测试，谓词其实就是一个判断的作用类似bool的作用
+     */
+    @Test
+    public void test_Predicate() {
+        //① 使用Predicate接口实现方法,只有一个test方法，传入一个参数，返回一个bool值
+        Predicate<Integer> predicate = new Predicate<Integer>() {
+            @Override
+            public boolean test(Integer integer) {
+                if(integer > 5){
+                    return true;
+                }
+                return false;
+            }
+        };
+
+        System.out.println(predicate.test(6));
+
+        System.out.println("********************");
+
+        //② 使用lambda表达式，
+        predicate = (t) -> t > 5;
+        System.out.println(predicate.test(1));
+        System.out.println("********************");
+
+    }
+
+
+    /**
+     * Predicate谓词测试，Predicate作为接口使用
+     */
+    @Test
+    public void test_Predicate2() {
+        //① 将Predicate作为filter接口，Predicate起到一个判断的作用
+        Predicate<Integer> predicate = new Predicate<Integer>() {
+            @Override
+            public boolean test(Integer integer) {
+                if(integer > 5){
+                    return true;
+                }
+                return false;
+            }
+        };
+
+        Stream<Integer> stream = Stream.of(1, 23, 3, 4, 5, 56, 6, 6);
+        List<Integer> list = stream.filter(predicate).collect(Collectors.toList());
+        list.forEach(System.out::println);
+
+        System.out.println("********************");
+
+    }
+
+
+    /**
+     * Function测试，function的作用是转换，将一个值转为另外一个值
+     */
+    @Test
+    public void test_Function() {
+        //① 使用map方法，泛型的第一个参数是转换前的类型，第二个是转化后的类型
+        Function<String, Integer> function = new Function<String, Integer>() {
+            @Override
+            public Integer apply(String s) {
+                return s.length();//获取每个字符串的长度，并且返回
+            }
+        };
+
+        Stream<String> stream = Stream.of("aaa", "bbbbb", "ccccccv");
+        Stream<Integer> stream1 = stream.map(function);
+        stream1.forEach(System.out::println);
+
+        System.out.println("********************");
+
     }
 
 }
