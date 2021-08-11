@@ -14,7 +14,7 @@ install:
 
 script:
   # - LOG=/app/docker
-  - mvn -Dgpg.skip=true -DskipTests=true -Dmaven.javadoc.skip=true clean package
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true
   # - mvn test > ${LOG}/testLog 2>&1
   #  - mvn test
   #  - mvn cobertura:cobertura
