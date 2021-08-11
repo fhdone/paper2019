@@ -16,8 +16,8 @@
 		<mybatis.version>3.5.2</mybatis.version>
 		<mybatisspring.version>2.0.2</mybatisspring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<downloadSources>true</downloadSources>
-		<downloadJavadocs>true</downloadJavadocs>
+<!--		<downloadSources>true</downloadSources>-->
+<!--		<downloadJavadocs>true</downloadJavadocs>-->
 	</properties>
 
 	<build>
@@ -52,7 +52,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.5</version>
+                <version>0.8.7</version>
                 <configuration>
                     <includes>
                         <include>com/**/*</include>
