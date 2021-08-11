@@ -13,7 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>5.3.7</spring.version>
-		<mybatis.version>3.5.2</mybatis.version>
+		<mybatis.version>3.5.7</mybatis.version>
 		<mybatisspring.version>2.0.2</mybatisspring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 <!--		<downloadSources>true</downloadSources>-->
@@ -297,7 +297,7 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>1.5.3</version>
+            <version>1.7.1</version>
         </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.mongodb</groupId>-->
