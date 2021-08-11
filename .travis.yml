@@ -10,7 +10,7 @@ env:
 #  - CODECOV_TOKEN="500df02a-c889-4aea-8d2a-8b8ac0d5b964"
 
 install:
-  - pip install user codecov
+  - pip install codecov
   - pip install coverage
 
 script:
