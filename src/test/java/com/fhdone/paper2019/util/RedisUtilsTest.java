@@ -1,6 +1,5 @@
 package com.fhdone.paper2019.util;
 
-import com.fhdone.paper2019.controller.StudentController;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,9 +11,9 @@ import redis.clients.jedis.ScanResult;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+@Ignore
 public class RedisUtilsTest {
 
     private Logger logger = LogManager.getLogger(this.getClass());

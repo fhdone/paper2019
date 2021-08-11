@@ -3,6 +3,7 @@ package com.fhdone.paper2019.util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -77,6 +78,7 @@ public class StringTest {
     }
 
     @Test
+    @Ignore
     public void test2_Infinite() throws InterruptedException {
        while (true){
            test2();
