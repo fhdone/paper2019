@@ -6,11 +6,13 @@ import com.fhdone.paper2019.service.StudentService;
 import com.github.pagehelper.PageHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+@Ignore
 public class StudentServiceImplTest extends BaseTest {
 
     private Logger logger = LogManager.getLogger(StudentServiceImplTest.class);

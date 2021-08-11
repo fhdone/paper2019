@@ -17,6 +17,7 @@ import com.fhdone.paper2019.BaseTest;
 import com.fhdone.paper2019.model.Student;
 import com.github.pagehelper.PageInfo;
 
+@Ignore
 public class SpringMvcTest extends BaseTest{
 	@Autowired
 	WebApplicationContext context;

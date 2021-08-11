@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Ignore
 public class ExcelTableExportTest extends BaseTest {
 
     private Logger logger = LogManager.getLogger(ExcelTableExportTest.class);

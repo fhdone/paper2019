@@ -6,9 +6,11 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.junit.Ignore;
 
 
 //http://www.cnblogs.com/huey/p/4693484.html
+@Ignore
 @RequiredArgsConstructor
 public class LombokDemo extends BaseTest {
 

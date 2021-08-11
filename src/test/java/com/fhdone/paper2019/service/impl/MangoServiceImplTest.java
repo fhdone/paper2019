@@ -3,15 +3,13 @@ package com.fhdone.paper2019.service.impl;
 import com.fhdone.paper2019.BaseTest;
 import com.fhdone.paper2019.service.MangoService;
 import lombok.extern.log4j.Log4j2;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.After;
+import org.junit.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
 
+@Ignore
 @Log4j2
 public class MangoServiceImplTest extends BaseTest {
 
