@@ -3,7 +3,7 @@ language: java
 dist: trusty
 
 jdk:
-    - oraclejdk8
+    - oraclejdk11
 
 env:
 #  - GRAALVM_VERSION="20.0.0"
@@ -14,7 +14,7 @@ install:
 
 script:
   # - LOG=/app/docker
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true
+  - mvn -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true clean package
   # - mvn test > ${LOG}/testLog 2>&1
   #  - mvn test
   #  - mvn cobertura:cobertura
