@@ -1,12 +1,14 @@
 package com.fhdone.paper2019.util;
 
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Date;
 import java.util.concurrent.*;
 
 //https://www.cnblogs.com/thisiswhy/p/14652640.html
+@Ignore
 public class ThreadTest {
 
     @Test
