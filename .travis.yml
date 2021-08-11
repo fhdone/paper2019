@@ -9,13 +9,14 @@ env:
 #  - GRAALVM_VERSION="20.0.0"
 #  - CODECOV_TOKEN="6267e9fd-fc9a-411a-be60-07e8d07b6697"
 
-install:
+#install:
 #  - pip install --user codecov
+install: mvn clean install -Dmaven.javadoc.skip=true -Dgpg.skip=true -Dmaven.test.skip=true
 
 script:
 #  "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true"
 #    - LOG=/app/docker
-    - mvn -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true clean package
+#    - mvn -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true clean package
 #    - mvn test > ${LOG}/testLog 2>&1
 #    - mvn test
 #    - mvn cobertura:cobertura
