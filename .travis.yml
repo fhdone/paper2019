@@ -10,7 +10,7 @@ env:
 #  - CODECOV_TOKEN="6267e9fd-fc9a-411a-be60-07e8d07b6697"
 
 install:
-  - pip install --user codecov
+#  - pip install --user codecov
 
 script:
   # - LOG=/app/docker
