@@ -12,12 +12,13 @@ env:
 install:
 #  - pip install --user codecov
 
-script: "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true"
-  # - LOG=/app/docker
-  #  - mvn -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true clean package
-  # - mvn test > ${LOG}/testLog 2>&1
-  #  - mvn test
-  #  - mvn cobertura:cobertura
+script:
+#  "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true"
+#    - LOG=/app/docker
+    - mvn -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true clean package
+#    - mvn test > ${LOG}/testLog 2>&1
+#    - mvn test
+#    - mvn cobertura:cobertura
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
