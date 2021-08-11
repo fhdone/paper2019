@@ -24,6 +24,6 @@ after_success:
 
 cache:
   directories:
-    - $HOME/.m2
-    - $HOME/.jdk
+#    - $HOME/.m2
+#    - $HOME/.jdk
 #    - $HOME/.cache/pip
