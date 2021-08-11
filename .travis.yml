@@ -6,7 +6,7 @@ jdk:
     - oraclejdk11
 
 env:
-  - GRAALVM_VERSION="20.0.0"
+#  - GRAALVM_VERSION="20.0.0"
 #  - CODECOV_TOKEN="500df02a-c889-4aea-8d2a-8b8ac0d5b964"
 
 install:
@@ -26,4 +26,4 @@ cache:
   directories:
     - $HOME/.m2
     - $HOME/.jdk
-    #- $HOME/.cache/pip
+#    - $HOME/.cache/pip
