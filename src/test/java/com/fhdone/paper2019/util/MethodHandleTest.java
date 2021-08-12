@@ -36,6 +36,7 @@ public class MethodHandleTest {
                 mh.invoke(this);
 
             } catch (Throwable e) {
+                e.printStackTrace();
             }
         }
     }
