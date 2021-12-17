@@ -35,9 +35,9 @@ public class JDK11Test {
         Assert.assertFalse(s.isBlank());
         Assert.assertEquals(" Jimo  Jimo  Jimo ", s.repeat(3));
 
-        var lines = "I'm a super man\ndo you know me?\n";
-        final Stream<String> stringStream = lines.lines();
-        System.out.println(stringStream.collect(Collectors.toList()));
+//        var lines = "I'm a super man\ndo you know me?\n";
+//        final Stream<String> stringStream = lines.lines();
+//        System.out.println(stringStream.collect(Collectors.toList()));
         /*[I'm a super man, do you know me?]*/
     }
 

@@ -9,7 +9,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 /**
- *
+ * --add-modules jdk.naming.rmi
  */
 public class RmiService2 {
     public static void main(String[] args) throws RemoteException, NamingException, AlreadyBoundException {
