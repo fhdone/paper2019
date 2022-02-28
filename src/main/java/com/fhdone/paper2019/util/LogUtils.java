@@ -19,7 +19,7 @@ public class LogUtils {
 	public static void logip() {
 		HttpServletRequest request =((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest(); 
 		logger.info(request.getRemoteAddr());
-        Set<K> set = Collections.newSetFromMap(new ConcurrentHashMap<K, Boolean>());
+        //Set<K> set = Collections.newSetFromMap(new ConcurrentHashMap<K, Boolean>());
 	}
 	
 	
