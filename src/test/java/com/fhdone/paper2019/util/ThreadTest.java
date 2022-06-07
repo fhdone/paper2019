@@ -62,7 +62,7 @@ public class ThreadTest {
 
     @Test
     public void beepForAnHour() throws Exception {
-        
+
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         
         final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(()->{
@@ -76,6 +76,13 @@ public class ThreadTest {
 //        scheduler.scheduleAtFixedRate(beeper, 1, 1, TimeUnit.SECONDS);
 //        scheduler.shutdown();
         scheduler.awaitTermination(10, TimeUnit.SECONDS);
+
+
+        Runtime.getRuntime().addShutdownHook(
+            new Thread(scheduler::shutdown)
+        );
+
+        
     }
     
     
