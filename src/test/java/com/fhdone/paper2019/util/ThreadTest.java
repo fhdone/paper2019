@@ -71,15 +71,16 @@ public class ThreadTest {
         scheduler.schedule( () ->{
             beeperHandle.cancel(true);
         }, 10, TimeUnit.SECONDS);
-
         
 //        scheduler.scheduleAtFixedRate(beeper, 1, 1, TimeUnit.SECONDS);
 //        scheduler.shutdown();
         scheduler.awaitTermination(10, TimeUnit.SECONDS);
 
-
         Runtime.getRuntime().addShutdownHook(
             new Thread(scheduler::shutdown)
+//            new Thread(()->{
+//                System.out.println("ShutdownHook");
+//            })
         );
 
         
