@@ -58,4 +58,25 @@ public class ThreadTest {
         }
     }
 
+
+
+    @Test
+    public void beepForAnHour() throws Exception {
+        
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        
+        final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(()->{
+            System.out.println("beep");
+        }, 1, 1, TimeUnit.SECONDS);
+        scheduler.schedule( () ->{
+            beeperHandle.cancel(true);
+        }, 10, TimeUnit.SECONDS);
+
+        
+//        scheduler.scheduleAtFixedRate(beeper, 1, 1, TimeUnit.SECONDS);
+//        scheduler.shutdown();
+        scheduler.awaitTermination(10, TimeUnit.SECONDS);
+    }
+    
+    
 }
