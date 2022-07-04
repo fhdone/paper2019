@@ -1,5 +1,6 @@
 package game;
 
+import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +12,10 @@ public class GuessGame {
     private static final int ROUND_NUM = 5;
     private List<Player> playerList = new ArrayList<>();
     private List<Round> roundList = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.name());
 
+    private SecureRandom rn = new SecureRandom();
+    
     public void initPlayer(){
         for(int i=0; i<PLAYER_NUM; i++) {
             System.out.print("Please enter player name:");
@@ -59,7 +62,6 @@ public class GuessGame {
      * 3 judge who win
      */
     public void guessNum(){
-        SecureRandom rn = new SecureRandom();
         for(int i=0; i<ROUND_NUM; i++) {
             int ansNum = rn.nextInt(10) + 1;
             roundList.add(new Round(ansNum));
