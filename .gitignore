@@ -55,6 +55,7 @@ local.properties
 
 # Annotation Processing
 .apt_generated/
+.apt_generated_tests
 
 # Scala IDE specific (Scala & Java development for Eclipse)
 .cache-main
@@ -75,3 +76,5 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 /.gradle/
+
+.vscode
